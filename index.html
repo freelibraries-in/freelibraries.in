@@ -54,9 +54,19 @@
           }
 
           var library_name = "<b>" + freelibraries[i]["LIBRARY_NAME"] + "</b><br>";
+          var address = freelibraries[i]["ADDRESS"] + "<br>"
+          var contact_person = "<b>" + freelibraries[i]["CONTACT_PERSON"] + "</b><br>";
+          var contact_email = "<b>" + freelibraries[i]["CONTACT_EMAIL"] + "</b><br>";
+          var website_link = freelibraries[i]["WEBSITE"]
+
+          if (website_link == "N/A") {
+            var website = "";
+          } else {
+            var website = "<a href = " + website_link + ">" + website_link + "</a>";
+          }
 
           console.log(library_name)
-          var marker = L.marker([coord[0], coord[1]]).bindPopup(library_name).addTo(mymap);
+          var marker = L.marker([coord[0], coord[1]]).bindPopup(library_name + address + website).addTo(mymap);
         }
       } catch(err) {
         console.log(err);
